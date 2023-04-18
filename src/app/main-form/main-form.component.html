@@ -32,7 +32,7 @@
       <div>
         <label class="form-label" for="placeOfBirth">Place of Birth:</label>
         <input class="form-control" type="text" id="placeOfBirth" required formControlName="placeOfBirth" >
-        <small *ngIf="placeOfBirth && placeOfBirth.invalid" class="text-danger">
+        <small *ngIf="placeOfBirth && placeOfBirth.invalid && placeOfBirth.touched " class="text-danger">
          * Place of Birth not proper
         </small>
       </div>
