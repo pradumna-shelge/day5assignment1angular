@@ -16,6 +16,7 @@
   border-radius: 10px;
    background-color: rgba(237, 63, 10, 0.577);
 }
-h1{
+h1,h2,h3{
   text-align: center;
+  color: rgb(80, 82, 82);
 }

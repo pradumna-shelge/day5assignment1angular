@@ -1,4 +1,4 @@
-<table>
+<table class="w-75 m-auto">
     <!-- <p>{{array1|json}}</p> -->
 
 
@@ -10,11 +10,9 @@
         <th scope="row">LastName</th>
     </tr>
 </th>
-<th>
-    Date of Birth
-</th>
-<th>placeOfBirth</th>
-<th>firstLanguage</th>
+<th class scope="row"> Date_of_Birth</th>
+<th class scope="row">place_Of_Birth</th>
+<th class scope="row">first_Language</th>
 
 <th > Address
     <tr>
@@ -44,7 +42,7 @@
         <th>phone</th>
     </tr>
 </th>
-<th > Emergency Contacts
+<th > Emergency_Contacts
     <tr>
         <th>Relation</th>
         <th>Mobile No</th>
@@ -68,9 +66,9 @@
 
 <td>
     <tr>
-        <td>{{item.address.city}},</td>
-        <td>{{item.address.state}},</td>
-        <td>{{item.address.country}},</td>
+        <td>{{item.address.city}}</td>
+        <td>{{item.address.state}}</td>
+        <td>{{item.address.country}}</td>
         <td>{{item.address.pin}}</td>
     </tr>
 </td>

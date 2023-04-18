@@ -139,15 +139,15 @@ export class MainFormComponent {
   }
 
   onSubmit() {
-    // let Array:EmergencyContacts[]=[{}as Controls ]
-    // for(let i of   this.emergencyContacts.value)
+    let Array:EmergencyContacts[]=[{}as Controls ]
+    for(let i of   this.emergencyContacts.value)
 
-    // {
-    // Array.push({
-    //   relation:i.relation,
-    //   monumber:i.number
-    //  })
-    // }
+    {
+    Array.push({
+      relation:i.relation,
+      monumber:i.number
+     })
+    }
 
     // console.log(this.studentForm.value)
     if (
@@ -192,7 +192,7 @@ export class MainFormComponent {
           designation: this.mdesignation?.value,
           phone: Number(this.mphone?.value),
         },
-        emergencyContacts: [...this.emergencyContacts.value],
+        emergencyContacts: Array,
       });
     }
   }

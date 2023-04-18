@@ -1,10 +1,10 @@
 
-    <h2>Student Admission Form</h2>
+    <h1>Student Admission Form</h1>
   
     <div  [formGroup]="studentForm" class="p-3 W-50">
       <!-- Name -->
-      <div class="w-50 p-2 border m-auto bg-light">
-        <h1>Student Information</h1>
+      <div class="w-25 p-2 border m-auto bg-light">
+        <h3>Student Information</h3>
       <div formGroupName="name" class="d-flex justify-content-around w-100">
         <div>
           <label class="form-label" for="firstName">First Name:</label>
@@ -102,10 +102,10 @@
         </div>
       </div>
     </div>
-  <div class="d-flex ">
+  <div class="d-flex justify-content-center">
    
-      <div formGroupName="father" class="w-50 p-2 m-2 border paa">
-        <h1>Father Information</h1>
+      <div formGroupName="father" class="w-25 p-2 m-5 border paa">
+        <h3>Father Information</h3>
         <div>
           <label class="form-label" for="fatherFullName">Full Name:</label>
           <input class="form-control" type="text" id="fatherFullName"  formControlName="fullName" >
@@ -159,8 +159,8 @@
 
       
   
-      <div formGroupName="mother" class="w-50 p-2 m-2 border maa">
-        <h1>Father Information</h1>
+      <div formGroupName="mother" class="w-25 p-2 m-5 border maa">
+        <h3>Mother Information</h3>
         <div>
           <label class="form-label" for="motherFullName">Full Name:</label>
           <input class="form-control" type="text" id="motherFullName"  formControlName="fullName" >
@@ -239,7 +239,10 @@
         </div>
         <button  (click)="addEem()" class="btn btn-success  w-100 mt-5">Add More</button>
     </div>
-      <button  (click)="onSubmit()" class="btn btn-primary  w-100 mt-5" [disabled]="studentForm.valid">Submit</button>
+    <div  class="w-75 m-auto">
+
+      <button (click)="onSubmit()" class="btn btn-primary w-100 btn-lg mt-4 m-auto" [disabled]="studentForm.valid">Submit</button>
+    </div>
 
     </div>
   
