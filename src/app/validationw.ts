@@ -1,4 +1,4 @@
-export interface validation{
+export interface validation1{
 name:fullName,
 dob:string,
 placeOfBirth:string,

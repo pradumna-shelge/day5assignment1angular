@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  Address,
+import { validation1, Address,
   Controls,
   EmergencyContacts,
   fullName,
-  Parent,
-  validation,
-} from 'src/validation';
+  Parent, } from './validationw';
+
 // import { Address, fullName, validation } from '';
 
 @Component({
@@ -17,7 +15,7 @@ import {
 })
 export class MainFormComponent {
   studentForm: FormGroup;
-  dataArray: validation[] = [];
+  dataArray: validation1[] = [];
 
   constructor(private fb: FormBuilder) {
     this.studentForm = this.fb.group({
