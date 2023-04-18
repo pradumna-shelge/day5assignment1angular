@@ -4,7 +4,7 @@ import { validation1, Address,
   Controls,
   EmergencyContacts,
   fullName,
-  Parent, } from './validationw';
+  Parent, } from '../validationw';
 
 // import { Address, fullName, validation } from '';
 

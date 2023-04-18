@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { validation } from 'src/validation';
+import { validation1 } from '../validationw';
 
 @Component({
   selector: 'app-table',
@@ -7,7 +7,7 @@ import { validation } from 'src/validation';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-@Input() array1 =[{}as validation]
+@Input() array1 =[{}as validation1]
 
 
 }
