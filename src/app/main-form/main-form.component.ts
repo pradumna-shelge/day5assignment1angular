@@ -57,36 +57,37 @@ export class MainFormComponent {
   }
 
   onSubmit() {
+    console.log(this.studentForm.value)
 
-if( (typeof this.name?.get('firstName')?.value == 'string' && typeof this.name?.get('middleName')?.value == 'string'&&
-typeof this.name?.get('lastName')?.value == 'string')&&
-(typeof this.studentForm.get('dob')?.value == 'object')
-){
+// if( (typeof this.name?.get('firstName')?.value == 'string' && typeof this.name?.get('middleName')?.value == 'string'&&
+// typeof this.name?.get('lastName')?.value == 'string')&&
+// (typeof this.studentForm.get('dob')?.value == 'object')
+// ){
 
 
-      let sname:fullName={
-        firstName:this.name1?.get('firstName')?.value,
-        middleName:this.name1?.get('middleName')?.value,
-        lastName:this.name1?.get('lastName')?.value,
-    }
-    let dob1 = this.studentForm.get('dob')?.value;
-    let pb = this.studentForm.get('placeOfBirth')?.value;
-    let fl = this.studentForm.get('firstLanguage')?.value;
-    let add:Address{
-      city: this.address.get('city')?.value,
-      state: this.address.get('state')?.value,
-      country: this.address.get('country')?.value,
-      pin: this.address.get('pin')?.value
-    }
-   this.dataArray.push({
-    name: sname,
-    dob:dob1,
-    placeOfBirth:pb,
-    firstLanguage:fl,
-    address:
-   }
-   )
-  }
+//       let sname:fullName={
+//         firstName:this.name?.get('firstName')?.value,
+//         middleName:this.name?.get('middleName')?.value,
+//         lastName:this.name?.get('lastName')?.value,
+//     }
+//     let dob1 = this.studentForm.get('dob')?.value;
+//     let pb = this.studentForm.get('placeOfBirth')?.value;
+//     let fl = this.studentForm.get('firstLanguage')?.value;
+//     let add:Address{
+//       city:this.address.get('city')?.value,
+//       state: this.,
+//       country: this.,
+//       pin: number
+//     }
+//    this.dataArray.push({
+//     name: sname,
+//     dob:dob1,
+//     placeOfBirth:pb,
+//     firstLanguage:fl,
+//     address:
+//    }
+//    )
+//   }
   }
   get emergencyContacts(){
     return this.studentForm.get('emergencyContacts') as FormArray
@@ -99,7 +100,7 @@ typeof this.name?.get('lastName')?.value == 'string')&&
     }))
     }
 
-    get name1(){
+    get name(){
       return this.studentForm.get('name')
     }
     get address(){
