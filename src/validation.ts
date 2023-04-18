@@ -1,12 +1,12 @@
 export interface validation{
 name:fullName,
-dob:object,
+dob:string,
 placeOfBirth:string,
 firstLanguage:string,
-address?:Address,
-father?:Parent,
-mother?:Parent,
-emergencyContacts?:[EmergencyContacts]
+address:Address,
+father:Parent,
+mother:Parent,
+emergencyContacts:EmergencyContacts[]
 }
 
 export interface fullName{
@@ -18,7 +18,7 @@ export interface Address{
      city: string,
         state: string,
         country: string,
-        pin: string
+        pin: number
 }
 
 export interface Parent{
@@ -31,10 +31,11 @@ export interface Parent{
 }
 
 export interface EmergencyContacts{
-    arr:[Controls]
+    relation: string,
+    monumber: string
 }
 
 export interface Controls{
     relation: string,
-    number: number
+    monumber: string
 }

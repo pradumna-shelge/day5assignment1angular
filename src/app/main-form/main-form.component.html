@@ -1,15 +1,18 @@
 
     <h2>Student Admission Form</h2>
   
-    <div  [formGroup]="studentForm" class="w-50 m-auto p-2 bg-light">
+    <div  [formGroup]="studentForm" class="p-3 W-50">
       <!-- Name -->
-      <div formGroupName="name">
+      <div class="w-50 p-2 border m-auto bg-light">
+        <h1>Student Information</h1>
+      <div formGroupName="name" class="d-flex justify-content-around w-100">
         <div>
           <label class="form-label" for="firstName">First Name:</label>
           <input class="form-control" type="text" id="firstName"  formControlName="firstName" >
          <small *ngIf="firstName && firstName.touched && firstName.invalid" class="text-danger">
 *First Name Required   
          </small>
+         
         </div>
   
         <div>
@@ -25,7 +28,7 @@
           
         <input class="form-control" type="text" id="lastName"  formControlName="lastName" >
         <small *ngIf="lastName&& lastName.touched && lastName.invalid" class="text-danger">
-          *Middle Name Required
+          *Last Name Required
                    </small>  
       </div>
       </div>
@@ -57,7 +60,7 @@
       </div>
   
       <!-- Address -->
-      <div formGroupName="address">
+      <div formGroupName="address" class="d-flex ">
         <div>
           <label class="form-label" for="city">City:</label>
           <input class="form-control" type="text" id="city"  formControlName="city" >
@@ -86,16 +89,23 @@
         <div>
           <label class="form-label" for="pin">Pin:</label>
           <input class="form-control" type="text" id="pin"  formControlName="pin" >
-          <small *ngIf="pin && pin .invalid && pin .touched" class="text-danger">
-            * Require name of pin  
-           </small>
+          <div *ngIf="pin && pin .invalid && (pin .touched|| pin.dirty)" class="text-danger">
+            <div *ngIf="pin.errors?.['required']">
+
+              * Require name of pin  
+            </div>
+            <div *ngIf="pin.errors?.['pattern']">
+
+              * enter number only  
+            </div>
+           </div>
         </div>
       </div>
-  
-      <!-- Father's Information -->
-      <h3>Father's Information</h3>
-  
-      <div formGroupName="father">
+    </div>
+  <div class="d-flex ">
+   
+      <div formGroupName="father" class="w-50 p-2 m-2 border paa">
+        <h1>Father Information</h1>
         <div>
           <label class="form-label" for="fatherFullName">Full Name:</label>
           <input class="form-control" type="text" id="fatherFullName"  formControlName="fullName" >
@@ -147,9 +157,10 @@
       </div>
       
 
-      <h3>mother's Information</h3>
+      
   
-      <div formGroupName="mother">
+      <div formGroupName="mother" class="w-50 p-2 m-2 border maa">
+        <h1>Father Information</h1>
         <div>
           <label class="form-label" for="motherFullName">Full Name:</label>
           <input class="form-control" type="text" id="motherFullName"  formControlName="fullName" >
@@ -199,29 +210,39 @@
            </small>
         </div>
       </div>
-      <div class="bg-warning p-2 mt-5">
+    
+    
+    </div>
+      <div class="war p-2 mt-5 w-50 m-auto ">
           <h3>Emergency Contact</h3>
 
    
       <div formArrayName="emergencyContacts"  *ngFor="let item of emergencyContacts.controls;let i=index">
-          <div [formGroupName]="i" class="d-flex justify-content-around">
-
+          <div [formGroupName]="i" class="d-flex justify-content-between">
+<div>
               <label class="form-label">Relation</label>
 <select formControlName="relation" class="form-select form-select-lg mb-3">
+  <option [selected]="true">--select Relation-- </option>
   <option value="Brother">Brother</option>
   <option value="Sister">Sister</option>
   <option value="Uncle">Uncle</option>
   <option value="Aunt">Aunt</option>
   <option value="Grandfather	">Grandfather	</option>
 </select>
+</div>
+<div>
               <label class="form-label">Contact No</label>
               <input type="text" class="form-control" formControlName="number">
           </div>
+        </div>
           <hr>
         </div>
         <button  (click)="addEem()" class="btn btn-success  w-100 mt-5">Add More</button>
     </div>
-      <button  (click)="onSubmit()" class="btn btn-primary  w-100 mt-5" [disabled]="studentForm.invalid">Submit</button>
+      <button  (click)="onSubmit()" class="btn btn-primary  w-100 mt-5" [disabled]="studentForm.valid">Submit</button>
 
     </div>
   
+
+
+    <app-table [array1]="dataArray"></app-table>

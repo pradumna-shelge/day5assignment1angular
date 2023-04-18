@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Address, fullName, validation } from 'src/validation';
+import { Address, Controls, EmergencyContacts, fullName, Parent, validation } from 'src/validation';
 // import { Address, fullName, validation } from '';
 
 @Component({
@@ -11,7 +11,7 @@ import { Address, fullName, validation } from 'src/validation';
 export class MainFormComponent {
 
   studentForm: FormGroup;
-  dataArray=[{}as validation]
+  dataArray:validation[]=[]
 
   constructor(private fb: FormBuilder) { 
 
@@ -29,7 +29,7 @@ export class MainFormComponent {
         city:  ['', [Validators.required,Validators.minLength(2)]],
         state:  ['', [Validators.required,Validators.minLength(2)]],
         country:  ['', [Validators.required,Validators.minLength(2)]],
-        pin:  ['', [Validators.required,Validators.minLength(2)]]
+        pin:  ['', [Validators.required,Validators.minLength(2),Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]]
       }),
       father: this.fb.group({
         fullName: ['', Validators.required],
@@ -50,7 +50,7 @@ export class MainFormComponent {
       emergencyContacts: this.fb.array([
         this.fb.group({
           relation: ['', [Validators.required]],
-          number: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/)]]
+          number: ['', [Validators.required]]
         })
       ])
    
@@ -82,24 +82,118 @@ export class MainFormComponent {
         city: this.city?.value,
         state: this.state?.value,
         country: this.country?.value,
-        pin:this.country?.value
+        pin:Number(this.pin?.value)
       };
     }
     return false
   }
+  vfather():Parent|boolean{
+    
+    if( (typeof this.fname?.value == 'string') &&
+    (typeof this.femail?.value === 'string')
+    &&  (typeof this.feducationQualification?.value === 'string')
+    &&  (typeof this.fprofession?.value === 'string')
+    &&  (typeof this.fdesignation?.value === 'string')
+    &&  (typeof this.fphone?.value === 'string') ){
 
+      return {
+        fullName: this.fname?.value,
+        email: this.femail?.value,
+        educationQualification: this.feducationQualification?.value,
+        profession: this.fprofession?.value,
+        designation: this.fdesignation?.value,
+        phone: Number(this.fphone?.value)
+      };
+    }
+    return false
+
+  }
+
+  vmother():Parent|boolean{
+    
+    if( (typeof this.mname?.value == 'string') &&
+    (typeof this.memail?.value === 'string')
+    &&  (typeof this.meducationQualification?.value === 'string')
+    &&  (typeof this.mprofession?.value === 'string')
+    &&  (typeof this.mdesignation?.value === 'string')
+    &&  (typeof this.mphone?.value === 'string') ){
+
+      return {
+        fullName: this.mname?.value,
+        email: this.memail?.value,
+        educationQualification: this.meducationQualification?.value,
+        profession: this.mprofession?.value,
+        designation: this.mdesignation?.value,
+        phone: Number(this.mphone?.value)
+      };
+    }
+    return false
+
+  }
+
+  
 
   onSubmit() {
-    console.log(this.studentForm.value)
-    if(this.vname() ){
 
+    // let Array:EmergencyContacts[]=[{}as Controls ]
+    // for(let i of   this.emergencyContacts.value) 
+    
+    // {
+    // Array.push({
+    //   relation:i.relation,
+    //   monumber:i.number
+    //  })
+    // }
 
+    // console.log(this.studentForm.value)
+    if(this.vname() && this.vAddress() && this.vfather() && this.vmother() 
+  && typeof this.dob?.value =='string' && typeof this.placeOfBirth?.value =='string' && 
+  typeof this.firstLanguage?.value =='string' 
+    ){
+
+      this.dataArray.push({
+        name:{
+          firstName:this.firstName?.value,
+          middleName: this.middleName?.value,
+        lastName:  this.lastName?.value,
+        },
+
+      dob: this.dob?.value,
+      placeOfBirth: this.placeOfBirth?.value,
+      firstLanguage: this.firstLanguage?.value,
+      address:{
+        city: this.city?.value,
+        state: this.state?.value,
+        country: this.country?.value,
+        pin:Number(this.pin?.value)
+      },
+
+      father:{
+        fullName: this.fname?.value,
+        email: this.femail?.value,
+        educationQualification: this.feducationQualification?.value,
+        profession: this.fprofession?.value,
+        designation: this.fdesignation?.value,
+        phone: Number(this.fphone?.value)
+      },
+      mother:{
+        fullName: this.mname?.value,
+        email: this.memail?.value,
+        educationQualification: this.meducationQualification?.value,
+        profession: this.mprofession?.value,
+        designation: this.mdesignation?.value,
+        phone: Number(this.mphone?.value)
+      },
+      emergencyContacts:[...this.emergencyContacts.value]
+
+        
+      })
       
-    }
+    
    
-
-
-
+    }
+    
+   
 
   }
 

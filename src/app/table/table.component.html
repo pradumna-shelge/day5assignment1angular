@@ -1,0 +1,111 @@
+<table>
+    <!-- <p>{{array1|json}}</p> -->
+
+
+    <tr>
+<th > Student
+    <tr>
+        <th scope="row">FirstName</th>
+        <th scope="row">Middle</th>
+        <th scope="row">LastName</th>
+    </tr>
+</th>
+<th>
+    Date of Birth
+</th>
+<th>placeOfBirth</th>
+<th>firstLanguage</th>
+
+<th > Address
+    <tr>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Pincode</th>
+    </tr>
+</th>
+
+<th > Father details
+    <tr>
+        <th>Name</th>
+        <th>education Qualification</th>
+        <th>profession</th>
+        <th>designation</th>
+        <th>phone</th>
+    </tr>
+</th>
+
+<th > Mother details
+    <tr>
+        <th>Name</th>
+        <th>education Qualification</th>
+        <th>profession</th>
+        <th>designation</th>
+        <th>phone</th>
+    </tr>
+</th>
+<th > Emergency Contacts
+    <tr>
+        <th>Relation</th>
+        <th>Mobile No</th>
+        
+    </tr>
+</th>
+    </tr>
+
+ <ng-container *ngFor="let item of array1 ">
+    <tr >
+<td >
+    <tr>
+        <td scope="row">{{item.name.firstName}}</td>
+        <td scope="row">{{item.name.middleName}}</td>
+        <td scope="row">{{item.name.lastName}}</td>
+    </tr>
+</td>
+<td>{{item.dob}}</td>
+<td>{{item.placeOfBirth}}</td>
+<td>{{item.firstLanguage}}</td>
+
+<td>
+    <tr>
+        <td>{{item.address.city}},</td>
+        <td>{{item.address.state}},</td>
+        <td>{{item.address.country}},</td>
+        <td>{{item.address.pin}}</td>
+    </tr>
+</td>
+<td>
+    <tr>
+        <td>{{item.father.fullName}}</td>
+        <td>{{item.father.email}}</td>
+        <td>{{item.father.educationQualification}}</td>
+        <td>{{item.father.profession}}</td>
+        <td>{{item.father.designation}}</td>
+        <td>{{item.father.phone}}</td>
+    </tr>
+</td>
+
+<td>
+    <tr>
+        <td>{{item.mother.fullName}}</td>
+        <td>{{item.mother.email}}</td>
+        <td>{{item.mother.educationQualification}}</td>
+        <td>{{item.mother.profession}}</td>
+        <td>{{item.mother.designation}}</td>
+        <td>{{item.mother.phone}}</td>
+    </tr>
+</td>
+
+<td>
+    <tr  *ngFor="let n of item.emergencyContacts">
+<td>{{n.relation}}</td>
+<td>{{n.monumber}}</td>
+
+    </tr>
+
+</td >
+
+    </tr>
+    
+</ng-container>
+</table>

@@ -1,7 +1,23 @@
 .ng-valid {
-  border: 1px solid green;
+  
 }
-/* 
-.ng.invalid {
-  border: 1px solid rgb(237, 11, 49);
-} */
+
+
+.paa{
+  background-color: rgba(143, 247, 247, 0.204);
+ border-radius: 10px;
+}
+.maa{
+ 
+  border-radius: 10px;
+   background-color: rgba(243, 126, 225, 0.192);
+}
+
+.war{
+
+  border-radius: 10px;
+   background-color: rgba(237, 63, 10, 0.577);
+}
+h1{
+  text-align: center;
+}
