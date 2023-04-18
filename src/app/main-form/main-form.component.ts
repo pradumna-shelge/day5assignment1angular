@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Address, fullName, validation } from 'src/validation';
+// import { Address, fullName, validation } from '';
 
 @Component({
   selector: 'app-main-form',
@@ -10,7 +10,7 @@ import { Address, fullName, validation } from 'src/validation';
 export class MainFormComponent {
 
   studentForm: FormGroup;
-  dataArray=[{}as validation]
+  // dataArray=[{}as validation]
 
   constructor(private fb: FormBuilder) { 
 
@@ -48,8 +48,8 @@ export class MainFormComponent {
       }),
       emergencyContacts: this.fb.array([
         this.fb.group({
-          relation: ['', Validators.required],
-          number: ['', Validators.required]
+          relation: ['', [Validators.required]],
+          number: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/)]]
         })
       ])
    
@@ -96,7 +96,7 @@ export class MainFormComponent {
   addEem() {
     this.emergencyContacts.push(this.fb.group({
       relation: ['', Validators.required],
-      number: ['', Validators.required]
+      number: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/)]]
     }))
     }
 
