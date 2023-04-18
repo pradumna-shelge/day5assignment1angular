@@ -22,8 +22,8 @@ export class MainFormComponent {
         lastName: ['', Validators.required]
       }),
       dob: ['', Validators.required],
-      placeOfBirth: ['', Validators.required],
-      firstLanguage: ['', Validators.required],
+      placeOfBirth: ['', [Validators.required,Validators.minLength(2)]],
+      firstLanguage: ['', [Validators.required,Validators.minLength(2)]],
       address: this.fb.group({
         city: ['', Validators.required],
         state: ['', Validators.required],
@@ -105,5 +105,8 @@ export class MainFormComponent {
     }
     get address(){
       return this.studentForm.get('address')
+    }
+    get placeOfBirth(){
+      return this.studentForm.get('placeOfBirth')
     }
 }

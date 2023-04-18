@@ -7,6 +7,9 @@
         <div>
           <label class="form-label" for="firstName">First Name:</label>
           <input class="form-control" type="text" id="firstName" required formControlName="firstName" >
+          <!-- <div *ngIf="name.firstName.touched && name.firstName.invalid" class="alert alert-danger">
+            <div *ngIf="name.firstName.errors?.required">firstName. is required.</div>
+        </div> -->
         </div>
   
         <div>
@@ -29,6 +32,9 @@
       <div>
         <label class="form-label" for="placeOfBirth">Place of Birth:</label>
         <input class="form-control" type="text" id="placeOfBirth" required formControlName="placeOfBirth" >
+        <small *ngIf="placeOfBirth && placeOfBirth.invalid" class="text-danger">
+         * Place of Birth not proper
+        </small>
       </div>
   
       <!-- First Language -->
@@ -102,6 +108,7 @@
         <div>
           <label class="form-label" for="motherFullName">Full Name:</label>
           <input class="form-control" type="text" id="motherFullName" required formControlName="fullName" >
+       
         </div>
   
         <div>
