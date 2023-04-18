@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Address, fullName, validation } from 'src/validation';
 // import { Address, fullName, validation } from '';
 
 @Component({
@@ -10,25 +11,25 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MainFormComponent {
 
   studentForm: FormGroup;
-  // dataArray=[{}as validation]
+  dataArray=[{}as validation]
 
   constructor(private fb: FormBuilder) { 
 
 
     this.studentForm = this.fb.group({
       name: this.fb.group({
-        firstName: ['', Validators.required],
-        middleName: '',
-        lastName: ['', Validators.required]
+        firstName: ['', [Validators.required,Validators.minLength(3)]],
+        middleName:  ['', [Validators.required,Validators.minLength(3)]],
+        lastName:  ['', [Validators.required,Validators.minLength(3)]]
       }),
       dob: ['', Validators.required],
       placeOfBirth: ['', [Validators.required,Validators.minLength(2)]],
       firstLanguage: ['', [Validators.required,Validators.minLength(2)]],
       address: this.fb.group({
-        city: ['', Validators.required],
-        state: ['', Validators.required],
-        country: ['', Validators.required],
-        pin: ['', Validators.required]
+        city:  ['', [Validators.required,Validators.minLength(2)]],
+        state:  ['', [Validators.required,Validators.minLength(2)]],
+        country:  ['', [Validators.required,Validators.minLength(2)]],
+        pin:  ['', [Validators.required,Validators.minLength(2)]]
       }),
       father: this.fb.group({
         fullName: ['', Validators.required],
@@ -56,42 +57,53 @@ export class MainFormComponent {
     });
   }
 
+  vname():fullName|boolean{
+
+    if( (typeof this.firstName?.value == 'string') &&
+    (typeof this.lastName?.value === 'string')
+    &&  (typeof this.middleName?.value === 'string')){
+
+      return {
+        firstName: this.firstName?.value,
+        middleName: this.middleName?.value,
+        lastName: this.lastName?.value
+      };
+    }
+    return false
+  }
+
+  vAddress():Address|boolean{
+    if( (typeof this.city?.value == 'string') &&
+    (typeof this.state?.value === 'string')
+    &&  (typeof this.country?.value === 'string')
+    &&  (typeof this.pin?.value === 'string')){
+
+      return {
+        city: this.city?.value,
+        state: this.state?.value,
+        country: this.country?.value,
+        pin:this.country?.value
+      };
+    }
+    return false
+  }
+
+
   onSubmit() {
     console.log(this.studentForm.value)
-
-// if( (typeof this.name?.get('firstName')?.value == 'string' && typeof this.name?.get('middleName')?.value == 'string'&&
-// typeof this.name?.get('lastName')?.value == 'string')&&
-// (typeof this.studentForm.get('dob')?.value == 'object')
-// ){
+    if(this.vname() ){
 
 
-//       let sname:fullName={
-//         firstName:this.name?.get('firstName')?.value,
-//         middleName:this.name?.get('middleName')?.value,
-//         lastName:this.name?.get('lastName')?.value,
-//     }
-//     let dob1 = this.studentForm.get('dob')?.value;
-//     let pb = this.studentForm.get('placeOfBirth')?.value;
-//     let fl = this.studentForm.get('firstLanguage')?.value;
-//     let add:Address{
-//       city:this.address.get('city')?.value,
-//       state: this.,
-//       country: this.,
-//       pin: number
-//     }
-//    this.dataArray.push({
-//     name: sname,
-//     dob:dob1,
-//     placeOfBirth:pb,
-//     firstLanguage:fl,
-//     address:
-//    }
-//    )
-//   }
+      
+    }
+   
+
+
+
+
   }
-  get emergencyContacts(){
-    return this.studentForm.get('emergencyContacts') as FormArray
-  }
+
+
 
   addEem() {
     this.emergencyContacts.push(this.fb.group({
@@ -100,13 +112,112 @@ export class MainFormComponent {
     }))
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     get name(){
-      return this.studentForm.get('name')
+      return <FormGroup>this.studentForm.get('name')
     }
-    get address(){
-      return this.studentForm.get('address')
+    get firstName(){
+      return this.name.get('firstName')
+    }
+    get middleName(){
+      return this.name.get('middleName')
+    }
+    get lastName(){
+      return this.name.get('lastName')
+    }
+    get dob(){
+      return this.studentForm.get('dob')
     }
     get placeOfBirth(){
       return this.studentForm.get('placeOfBirth')
     }
+    get firstLanguage(){
+      return this.studentForm.get('firstLanguage')
+    }
+    get address(){
+      return <FormGroup> this.studentForm.get('address')
+    }
+    get city(){
+      return this.address?.get('city')
+    }
+    get state(){
+      return this.address?.get('state')
+    }
+    get country(){
+      return this.address?.get('country')
+    }
+    get pin(){
+      return this.address?.get('pin')
+    }
+
+    // ===========father========
+    get father(){
+      return this.studentForm.get('father')
+    }
+    get fname(){
+      return this.father?.get('fullName')
+    }
+    get femail(){
+      return this.father?.get('email')
+    }
+    get feducationQualification(){
+      return this.father?.get('educationQualification')
+    }
+    get fprofession(){
+      return this.father?.get('profession')
+    }
+    get fdesignation(){
+      return this.father?.get('designation')
+    }
+    get fphone(){
+      return this.father?.get('phone')
+    }
+
+// ==================mother ===========================
+get mother(){
+  return this.studentForm.get('mother')
+}
+get mname(){
+  return this.mother?.get('fullName')
+}
+get memail(){
+  return this.mother?.get('email')
+}
+get meducationQualification(){
+  return this.mother?.get('educationQualification')
+}
+get mprofession(){
+  return this.mother?.get('profession')
+}
+get mdesignation(){
+  return this.mother?.get('designation')
+}
+get mphone(){
+  return this.mother?.get('phone')
+}
+// ===========================emergency===========================
+
+get emergencyContacts(){
+  return this.studentForm.get('emergencyContacts') as FormArray
+}
+// =============================
 }

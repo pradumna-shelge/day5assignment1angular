@@ -6,63 +6,89 @@
       <div formGroupName="name">
         <div>
           <label class="form-label" for="firstName">First Name:</label>
-          <input class="form-control" type="text" id="firstName" required formControlName="firstName" >
-          <!-- <div *ngIf="name.firstName.touched && name.firstName.invalid" class="alert alert-danger">
-            <div *ngIf="name.firstName.errors?.required">firstName. is required.</div>
-        </div> -->
+          <input class="form-control" type="text" id="firstName"  formControlName="firstName" >
+         <small *ngIf="firstName && firstName.touched && firstName.invalid" class="text-danger">
+*First Name Required
+         </small>
         </div>
   
         <div>
           <label class="form-label" for="middleName">Middle Name:</label>
-          <input class="form-control" type="text" id="middleName" required formControlName="middleName">
+          <input class="form-control" type="text" id="middleName"  formControlName="middleName">
+          <small *ngIf="middleName && middleName .touched && middleName .invalid" class="text-danger">
+            *Middle Name Required
+                     </small>
         </div>
   
         <div>
           <label class="form-label" for="lastName">Last Name:</label>
-          <input class="form-control" type="text" id="lastName" required formControlName="lastName" >
-        </div>
+          
+        <input class="form-control" type="text" id="lastName"  formControlName="lastName" >
+        <small *ngIf="lastName&& lastName.touched && lastName.invalid" class="text-danger">
+          *Middle Name Required
+                   </small>  
+      </div>
       </div>
 
       <div>
         <label class="form-label" for="dob">Date of Birth:</label>
-        <input class="form-control" type="date" id="dob" required formControlName="dob" >
+        <input class="form-control" type="date" id="dob"  formControlName="dob" >
+        <small *ngIf="dob&& dob.touched && dob.invalid" class="text-danger">
+          *please choose date
+                   </small> 
       </div>
   
       <!-- Place of Birth -->
       <div>
         <label class="form-label" for="placeOfBirth">Place of Birth:</label>
-        <input class="form-control" type="text" id="placeOfBirth" required formControlName="placeOfBirth" >
-        <small *ngIf="placeOfBirth && placeOfBirth.invalid" class="text-danger">
-         * Place of Birth not proper
+        <input class="form-control" type="text" id="placeOfBirth"  formControlName="placeOfBirth" >
+        <small *ngIf="placeOfBirth && placeOfBirth.invalid && placeOfBirth.touched" class="text-danger">
+         * Require place  of Birth 
         </small>
       </div>
   
       <!-- First Language -->
       <div>
         <label class="form-label" for="firstLanguage">First Language:</label>
-        <input class="form-control" type="text" id="firstLanguage" required formControlName="firstLanguage" >
+        <input class="form-control" type="text" id="firstLanguage"  formControlName="firstLanguage" >
+        <small *ngIf="firstLanguage&& firstLanguage.invalid && firstLanguage.touched" class="text-danger">
+          * please enter first language 
+         </small>
       </div>
   
       <!-- Address -->
       <div formGroupName="address">
         <div>
           <label class="form-label" for="city">City:</label>
-          <input class="form-control" type="text" id="city" required formControlName="city" >
+          <input class="form-control" type="text" id="city"  formControlName="city" >
+          <small *ngIf="city && city.invalid && city.touched" class="text-danger">
+            * Require name of City
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="state">State:</label>
-          <input class="form-control" type="text" id="state" required formControlName="state" >
+          
+          <input class="form-control" type="text" id="state"  formControlName="state" >
+          <small *ngIf="state && state.invalid && state.touched" class="text-danger">
+            * Require name of state 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="country">Country:</label>
-          <input class="form-control" type="text" id="country" required formControlName="country" >
+          <input class="form-control" type="text" id="country"  formControlName="country" >
+          <small *ngIf="country&& country.invalid && country.touched" class="text-danger">
+            * Require name of country 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="pin">Pin:</label>
-          <input class="form-control" type="text" id="pin" required formControlName="pin" >
+          <input class="form-control" type="text" id="pin"  formControlName="pin" >
+          <small *ngIf="pin && pin .invalid && pin .touched" class="text-danger">
+            * Require name of pin  
+           </small>
         </div>
       </div>
   
@@ -72,32 +98,51 @@
       <div formGroupName="father">
         <div>
           <label class="form-label" for="fatherFullName">Full Name:</label>
-          <input class="form-control" type="text" id="fatherFullName" required formControlName="fullName" >
+          <input class="form-control" type="text" id="fatherFullName"  formControlName="fullName" >
+          <small *ngIf="fname && fname .invalid && fname .touched" class="text-danger">
+            * enter father name 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="fatherEmail">Email:</label>
-          <input class="form-control" type="email" id="fatherEmail" required formControlName="email" >
+          <input class="form-control" type="email" id="fatherEmail"  formControlName="email" >
+          <small *ngIf="femail && femail .invalid && femail .touched" class="text-danger">
+            * enter father email 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="fatherEducation">Education Qualification:</label>
-          <input class="form-control" type="text" id="fatherEducation" required formControlName="educationQualification" >
+          <input class="form-control" type="text" id="fatherEducation"  formControlName="educationQualification" >
+          <small *ngIf="feducationQualification && feducationQualification .invalid && feducationQualification .touched" class="text-danger">
+            * enter father education Qualification 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="fatherProfession">Profession:</label>
-          <input class="form-control" type="text" id="fatherProfession" required formControlName="profession" >
+          
+          <input class="form-control" type="text" id="fatherProfession"  formControlName="profession" >
+          <small *ngIf="fprofession && fprofession .invalid && fprofession .touched" class="text-danger">
+            * enter father profession
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="fatherDesignation">Designation:</label>
-          <input class="form-control" type="text" id="fatherDesignation" required formControlName="designation" >
+          <input class="form-control" type="text" id="fatherDesignation"  formControlName="designation" >
+          <small *ngIf="fdesignation && fdesignation .invalid && fdesignation .touched" class="text-danger">
+            * enter father designation
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="fatherPhone">Phone:</label>
-          <input class="form-control" type="text" id="fatherPhone" required formControlName="phone" >
+          <input class="form-control" type="text" id="fatherPhone"  formControlName="phone" >
+          <small *ngIf="fphone && fphone .invalid && fphone .touched" class="text-danger">
+            * enter father phone number
+           </small>
         </div>
       </div>
       
@@ -107,33 +152,51 @@
       <div formGroupName="mother">
         <div>
           <label class="form-label" for="motherFullName">Full Name:</label>
-          <input class="form-control" type="text" id="motherFullName" required formControlName="fullName" >
-       
+          <input class="form-control" type="text" id="motherFullName"  formControlName="fullName" >
+          <small *ngIf="mname && mname .invalid && mname .touched" class="text-danger">
+            * enter Mother name 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="motherEmail">Email:</label>
-          <input class="form-control" type="email" id="motherEmail" required formControlName="email" >
+          
+          <input class="form-control" type="email" id="motherEmail"  formControlName="email" >
+          <small *ngIf="memail && memail .invalid && memail .touched" class="text-danger">
+            * enter mother email 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="motherEducation">Education Qualification:</label>
-          <input class="form-control" type="text" id="motherEducation" required formControlName="educationQualification" >
+          <input class="form-control" type="text" id="motherEducation"  formControlName="educationQualification" >
+          <small *ngIf="meducationQualification && meducationQualification .invalid && meducationQualification .touched" class="text-danger">
+            * enter Mother education Qualification 
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="motherProfession">Profession:</label>
-          <input class="form-control" type="text" id="motherProfession" required formControlName="profession" >
+          <input class="form-control" type="text" id="motherProfession"  formControlName="profession" >
+          <small *ngIf="mprofession && mprofession .invalid && mprofession .touched" class="text-danger">
+            * enter Mother profession
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="motherDesignation">Designation:</label>
-          <input class="form-control" type="text" id="motherDesignation" required formControlName="designation" >
+          <input class="form-control" type="text" id="motherDesignation"  formControlName="designation" >
+          <small *ngIf="mdesignation && mdesignation .invalid && mdesignation .touched" class="text-danger">
+            * enter Mother signation
+           </small>
         </div>
   
         <div>
           <label class="form-label" for="motherPhone">Phone:</label>
-          <input class="form-control" type="text" id="motherPhone" required formControlName="phone" >
+          <input class="form-control" type="text" id="motherPhone"  formControlName="phone" >
+          <small *ngIf="mphone && mphone .invalid && mphone .touched" class="text-danger">
+            * enter Mother phone number
+           </small>
         </div>
       </div>
       <div class="bg-warning p-2 mt-5">
