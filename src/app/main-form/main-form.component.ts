@@ -59,7 +59,7 @@ export class MainFormComponent {
       emergencyContacts: this.fb.array([
         this.fb.group({
           relation: ['', [Validators.required]],
-          number: ['', [Validators.required]],
+          number: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/)]],
         }),
       ]),
     });

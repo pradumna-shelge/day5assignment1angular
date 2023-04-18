@@ -37,7 +37,7 @@
         <label class="form-label" for="dob">Date of Birth:</label>
         <input class="form-control" type="date" id="dob"  formControlName="dob" >
         <small *ngIf="dob&& dob.touched && dob.invalid" class="text-danger">
-          *please choose date
+          *Please choose date
                    </small> 
       </div>
   
@@ -55,7 +55,7 @@
         <label class="form-label" for="firstLanguage">First Language:</label>
         <input class="form-control" type="text" id="firstLanguage"  formControlName="firstLanguage" >
         <small *ngIf="firstLanguage&& firstLanguage.invalid && firstLanguage.touched" class="text-danger">
-          * please enter first language 
+          * Please enter first language 
          </small>
       </div>
   
@@ -92,11 +92,11 @@
           <div *ngIf="pin && pin .invalid && (pin .touched|| pin.dirty)" class="text-danger">
             <div *ngIf="pin.errors?.['required']">
 
-              * Require name of pin  
+              * Require Pincode
             </div>
             <div *ngIf="pin.errors?.['pattern']">
 
-              * enter number only  
+              * Pincode should be Numeric Format  
             </div>
            </div>
         </div>
@@ -110,7 +110,7 @@
           <label class="form-label" for="fatherFullName">Full Name:</label>
           <input class="form-control" type="text" id="fatherFullName"  formControlName="fullName" >
           <small *ngIf="fname && fname .invalid && fname .touched" class="text-danger">
-            * enter father name 
+            * Enter father name 
            </small>
         </div>
   
@@ -118,7 +118,7 @@
           <label class="form-label" for="fatherEmail">Email:</label>
           <input class="form-control" type="email" id="fatherEmail"  formControlName="email" >
           <small *ngIf="femail && femail .invalid && femail .touched" class="text-danger">
-            * enter father email 
+            * Enter father email 
            </small>
         </div>
   
@@ -126,7 +126,7 @@
           <label class="form-label" for="fatherEducation">Education Qualification:</label>
           <input class="form-control" type="text" id="fatherEducation"  formControlName="educationQualification" >
           <small *ngIf="feducationQualification && feducationQualification .invalid && feducationQualification .touched" class="text-danger">
-            * enter father education Qualification 
+            * Enter father education Qualification 
            </small>
         </div>
   
@@ -135,7 +135,7 @@
           
           <input class="form-control" type="text" id="fatherProfession"  formControlName="profession" >
           <small *ngIf="fprofession && fprofession .invalid && fprofession .touched" class="text-danger">
-            * enter father profession
+            * Enter father profession
            </small>
         </div>
   
@@ -143,7 +143,7 @@
           <label class="form-label" for="fatherDesignation">Designation:</label>
           <input class="form-control" type="text" id="fatherDesignation"  formControlName="designation" >
           <small *ngIf="fdesignation && fdesignation .invalid && fdesignation .touched" class="text-danger">
-            * enter father designation
+            * Enter father designation
            </small>
         </div>
   
@@ -151,7 +151,7 @@
           <label class="form-label" for="fatherPhone">Phone:</label>
           <input class="form-control" type="text" id="fatherPhone"  formControlName="phone" >
           <small *ngIf="fphone && fphone .invalid && fphone .touched" class="text-danger">
-            * enter father phone number
+            * Enter father phone number
            </small>
         </div>
       </div>
@@ -165,7 +165,7 @@
           <label class="form-label" for="motherFullName">Full Name:</label>
           <input class="form-control" type="text" id="motherFullName"  formControlName="fullName" >
           <small *ngIf="mname && mname .invalid && mname .touched" class="text-danger">
-            * enter Mother name 
+            * Enter Mother name 
            </small>
         </div>
   
@@ -174,7 +174,7 @@
           
           <input class="form-control" type="email" id="motherEmail"  formControlName="email" >
           <small *ngIf="memail && memail .invalid && memail .touched" class="text-danger">
-            * enter mother email 
+            * Enter mother email 
            </small>
         </div>
   
@@ -182,7 +182,7 @@
           <label class="form-label" for="motherEducation">Education Qualification:</label>
           <input class="form-control" type="text" id="motherEducation"  formControlName="educationQualification" >
           <small *ngIf="meducationQualification && meducationQualification .invalid && meducationQualification .touched" class="text-danger">
-            * enter Mother education Qualification 
+            * Enter Mother education Qualification 
            </small>
         </div>
   
@@ -190,7 +190,7 @@
           <label class="form-label" for="motherProfession">Profession:</label>
           <input class="form-control" type="text" id="motherProfession"  formControlName="profession" >
           <small *ngIf="mprofession && mprofession .invalid && mprofession .touched" class="text-danger">
-            * enter Mother profession
+            * Enter Mother profession
            </small>
         </div>
   
@@ -198,7 +198,7 @@
           <label class="form-label" for="motherDesignation">Designation:</label>
           <input class="form-control" type="text" id="motherDesignation"  formControlName="designation" >
           <small *ngIf="mdesignation && mdesignation .invalid && mdesignation .touched" class="text-danger">
-            * enter Mother signation
+            * Enter Mother signation
            </small>
         </div>
   
@@ -206,14 +206,14 @@
           <label class="form-label" for="motherPhone">Phone:</label>
           <input class="form-control" type="text" id="motherPhone"  formControlName="phone" >
           <small *ngIf="mphone && mphone .invalid && mphone .touched" class="text-danger">
-            * enter Mother phone number
+            * Enter Mother phone number
            </small>
         </div>
       </div>
     
     
     </div>
-      <div class="war p-2 mt-5 w-50 m-auto ">
+      <div class="war p-2 mt-5 w-25 m-auto ">
           <h3>Emergency Contact</h3>
 
    
@@ -221,7 +221,7 @@
           <div [formGroupName]="i" class="d-flex justify-content-between">
 <div>
               <label class="form-label">Relation</label>
-<select formControlName="relation" class="form-select form-select-lg mb-3">
+<select formControlName="relation" class="form-select ">
   <option [selected]="true">--select Relation-- </option>
   <option value="Brother">Brother</option>
   <option value="Sister">Sister</option>
@@ -232,7 +232,7 @@
 </div>
 <div>
               <label class="form-label">Contact No</label>
-              <input type="text" class="form-control" formControlName="number">
+              <input type="text" class="form-control " formControlName="number">
           </div>
         </div>
           <hr>
@@ -241,7 +241,7 @@
     </div>
     <div  class="w-75 m-auto">
 
-      <button (click)="onSubmit()" class="btn btn-primary w-100 btn-lg mt-4 m-auto" [disabled]="studentForm.valid">Submit</button>
+      <button (click)="onSubmit()" class="btn btn-primary w-100 btn-lg mt-4 m-auto" [disabled]="studentForm.invalid">Submit</button>
     </div>
 
     </div>
