@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Address, fullName, validation } from 'src/validation';
 
 @Component({
   selector: 'app-main-form',
@@ -9,6 +10,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MainFormComponent {
 
   studentForm: FormGroup;
+  dataArray=[{}as validation]
 
   constructor(private fb: FormBuilder) { 
 
@@ -42,7 +44,7 @@ export class MainFormComponent {
         educationQualification: ['', Validators.required],
         profession: ['', Validators.required],
         designation: ['', Validators.required],
-        phone: ['', Validators.required]
+        phone: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/)]]
       }),
       emergencyContacts: this.fb.array([
         this.fb.group({
@@ -54,9 +56,37 @@ export class MainFormComponent {
     });
   }
 
-  onSubmit(): void {
-    console.log(this.studentForm.value);
-    
+  onSubmit() {
+
+if( (typeof this.name?.get('firstName')?.value == 'string' && typeof this.name?.get('middleName')?.value == 'string'&&
+typeof this.name?.get('lastName')?.value == 'string')&&
+(typeof this.studentForm.get('dob')?.value == 'object')
+){
+
+
+      let sname:fullName={
+        firstName:this.name1?.get('firstName')?.value,
+        middleName:this.name1?.get('middleName')?.value,
+        lastName:this.name1?.get('lastName')?.value,
+    }
+    let dob1 = this.studentForm.get('dob')?.value;
+    let pb = this.studentForm.get('placeOfBirth')?.value;
+    let fl = this.studentForm.get('firstLanguage')?.value;
+    let add:Address{
+      city: this.address.get('city')?.value,
+      state: this.address.get('state')?.value,
+      country: this.address.get('country')?.value,
+      pin: this.address.get('pin')?.value
+    }
+   this.dataArray.push({
+    name: sname,
+    dob:dob1,
+    placeOfBirth:pb,
+    firstLanguage:fl,
+    address:
+   }
+   )
+  }
   }
   get emergencyContacts(){
     return this.studentForm.get('emergencyContacts') as FormArray
@@ -67,5 +97,12 @@ export class MainFormComponent {
       relation: ['', Validators.required],
       number: ['', Validators.required]
     }))
+    }
+
+    get name1(){
+      return this.studentForm.get('name')
+    }
+    get address(){
+      return this.studentForm.get('address')
     }
 }

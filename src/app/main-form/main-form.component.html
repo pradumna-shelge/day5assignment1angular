@@ -133,19 +133,25 @@
           <h3>Emergency Contact</h3>
 
    
-      <div  *ngFor="let item of emergencyContacts.value;let i=index">
-          <div formGroupName="{{i}}">
+      <div formArrayName="emergencyContacts"  *ngFor="let item of emergencyContacts.controls;let i=index">
+          <div [formGroupName]="i" class="d-flex justify-content-around">
 
               <label class="form-label">Relation</label>
-              <input type="text" class="form-control" formControlName="relation">
+<select formControlName="relation" class="form-select form-select-lg mb-3">
+  <option value="Brother">Brother</option>
+  <option value="Sister">Sister</option>
+  <option value="Uncle">Uncle</option>
+  <option value="Aunt">Aunt</option>
+  <option value="Grandfather	">Grandfather	</option>
+</select>
               <label class="form-label">Contact No</label>
-              <input type="number" class="form-control" formControlName="number">
+              <input type="text" class="form-control" formControlName="number">
           </div>
           <hr>
         </div>
         <button  (click)="addEem()" class="btn btn-success  w-100 mt-5">Add More</button>
     </div>
-      <button  (click)="onSubmit()" class="btn btn-primary  w-100 mt-5">Subit</button>
+      <button  (click)="onSubmit()" class="btn btn-primary  w-100 mt-5" [disabled]="studentForm.invalid">Submit</button>
 
     </div>
   
