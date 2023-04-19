@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { validation1, Address,
+import {
+  validation1,
+  Address,
   Controls,
   EmergencyContacts,
   fullName,
-  Parent, } from '../validationw';
+  Parent,
+} from '../validationw';
 
 // import { Address, fullName, validation } from '';
 
@@ -59,7 +62,7 @@ export class MainFormComponent {
       emergencyContacts: this.fb.array([
         this.fb.group({
           relation: ['', [Validators.required]],
-          number: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/)]],
+          number: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         }),
       ]),
     });
@@ -139,14 +142,12 @@ export class MainFormComponent {
   }
 
   onSubmit() {
-    let Array:EmergencyContacts[]=[{}as Controls ]
-    for(let i of   this.emergencyContacts.value)
-
-    {
-    Array.push({
-      relation:i.relation,
-      monumber:i.number
-     })
+    let Array: EmergencyContacts[] = [{} as Controls];
+    for (let i of this.emergencyContacts.value) {
+      Array.push({
+        relation: i.relation,
+        monumber: i.number,
+      });
     }
 
     // console.log(this.studentForm.value)
@@ -195,6 +196,9 @@ export class MainFormComponent {
         emergencyContacts: Array,
       });
     }
+
+    this.emergencyContacts.clear();
+    this.addEem();
   }
 
   addEem() {
